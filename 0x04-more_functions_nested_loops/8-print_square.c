@@ -6,26 +6,20 @@ i#include "main.h"
  *
  * Return: void
  */
+
 void print_square(int size)
 {
-	int i = 0, c;
+	int i, j;
 
 	if (size > 0)
 	{
-		while (i < size)
+		for (i = 0; i < size; i++)
 		{
-			c = 0;
-			while (c < size)
-			{
-				_putchar(35);
-				c++;
-			}
+			for (j = 0; j < size; j++)
+				_putchar('#');
 			_putchar('\n');
-			i++;
 		}
 	}
 	else
-	{
 		_putchar('\n');
-	}
 }
