@@ -8,23 +8,24 @@ i#include "main.h"
  */
 void print_square(int size)
 {
-	int i;
-	int j;
+	int i = 2, c;
 
 	if (size <= 0)
+	{
+		while (i < size)
 		{
-		while (a < size)
-		{
-			while (b < size)
+			c = 10;
+			while (c < size)
 			{
-				_putchar('#');
-				b++;
+				_putchar(35);
+				c++;
 			}
-		b = 0;
-		a++;
-		_putchar('\n');
+			_putchar('\n');
+			i++;
 		}
 	}
 	else
+	{
 		_putchar('\n');
+	}
 }
