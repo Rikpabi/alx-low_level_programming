@@ -13,9 +13,11 @@ int _isupper(int c)
 	int isupper = 0;
 	for (; uppercase <= 'Z'; uppercase++)
 	{
-		if (c == uppercase)
+		if (c >=65 && c <= 91)
 		{
-			isupper = 1;
+			return (1);
+		else
+			return (0);
 			break;
 		}
 	}
