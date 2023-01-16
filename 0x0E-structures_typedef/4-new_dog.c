@@ -2,68 +2,59 @@
 #include <stdlib.h>
 
 /**
- * *_strcpy - Copy the given string
- * @dest: Location to copy string to
- * @src: String to copy to given location
+ * new_dog - new element of type struct dog
  *
- * Return: Pointer to dest
- */
-char *_strcpy(char *dest, char *src)
-{
-	int i = 0;
-
-	while (*(src + i) != 0)
-	{
-		*(dest + i) = *(src + i);
-		i++;
-	}
-	*(dest + i) = '\0';
-	return (dest);
-}
-
-/**
- * new_dog - Create a new dog struct
- * @name: Name of dog
- * @age: Age of dog
- * @owner: Owner of dog
- *
- * Return: pointer to struct, NULL if fails
+ * @name: name of new dog
+ * @age: age of new dog
+ * @owner: owner of new dog
+ * Return: new struct dog
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *new_dog;
-	char *new_name;
-	char *new_owner;
-	int len;
+	char *dog_name, *dog_owner;
 
 	new_dog = malloc(sizeof(dog_t));
 	if (new_dog == NULL)
-		return (NULL);
-	len = 0;
-	while (name[len] != '\0')
-		len++;
-	len++;
-	new_name = malloc(len * sizeof(*owner));
-	if (new_name == NULL)
+		return (new_dog);
+	dog_name = malloc(sizeof(name));
+		if (dog_name == NULL)
+		{
+			free(new_dog);
+			return (NULL);
+		}
+	dog_owner = malloc(sizeof(owner));
+	if (dog_owner == NULL)
 	{
+		free(dog_name);
 		free(new_dog);
 		return (NULL);
 	}
-	len = 0;
-	while (name[len] != '\0')
-		len++;
-	len++;
-	new_owner = malloc(len * sizeof(*name));
-	if (new_owner == NULL)
-	{
-		free(new_name);
-		free(new_dog);
-		return (NULL);
-	}
-	_strcpy(new_name, name);
-	_strcpy(new_owner, owner);
-	new_dog->name = new_name;
+	_strcpy(dog_name, name);
+	_strcpy(dog_owner, owner);
+	new_dog->name = dog_name;
+	new_dog->owner = dog_owner;
 	new_dog->age = age;
-	new_dog->owner = new_owner;
 	return (new_dog);
-}}
+}
+
+/**
+ * *_strcpy - copies string to given memory location
+ * @dest: where the string needs to be copied
+ * @src: where the string is
+ *
+ * Return: char
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int len = 0;
+
+	while (*(src + len) != '\0')
+	{
+		*(dest + len) = *(src + len);
+		len++;
+	}
+	*(dest + len) = *(src + len);
+
+	return (dest);
+}
